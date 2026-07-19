@@ -1,0 +1,27 @@
+=== BLOCK 1: PERSONA ===
+{persona_text}
+
+=== BLOCK 2: OPERATIONAL STATE (injected at runtime) ===
+CURRENT {tier_upper} STATUS:
+{state_lines}
+
+=== BLOCK 3: COORDINATOR INSTRUCTION ===
+INSTRUCTION FROM COORDINATING AGENT:
+  Rule triggered : {rule_id}  ({rule_label})
+  Urgency level  : {urgency}
+  Instruction    : {instruction_text}
+
+=== BLOCK 4: DECISION HISTORY (last 3 decisions in this session) ===
+{decision_history}
+
+=== BLOCK 5a (CoT mode) ===
+Think step by step about the current situation at your tier.
+Consider: the severity of the disruption, your local operational constraints,
+and whether the coordinator's instruction is appropriate for your current state.
+
+Then output ONLY valid JSON in this exact format, with no text before or after it:
+{{
+  "decision": "ACCEPT" | "MODIFY" | "OVERRIDE",
+  "factor": <number between 0.0 and 1.0>,
+  "justification": "<2-3 sentences explaining your reasoning>"
+}}
