@@ -1,0 +1,7 @@
+Metric,N,Mean,Std,Min,Max,CI_95_Lo,CI_95_Hi
+Stock Availability Rate (%),2,19.184,6.015,14.931,23.438,-34.861,73.23
+Time to Recovery (hours),2,3.0,0.0,3.0,3.0,,
+Stockout Duration (hours),2,37.875,18.915,24.5,51.25,-132.07,207.82
+Stockout Frequency,2,19.0,5.657,15.0,23.0,-31.825,69.825
+Min Stock During Disruption,2,0.0,0.0,0.0,0.0,,
+Recovery Speed Index,2,0.948,0.015,0.938,0.958,0.816,1.08

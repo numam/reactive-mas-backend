@@ -1,0 +1,4 @@
+log_id,timestamp,supplier,farm,slaughterhouse,wholesaler,retail,matched_rule,orchestrator_decision,urgency_level,justification,report_type,scenario_id,mode
+L001,2026-04-27 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,59,hitl
+L002,2026-04-28 20:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,59,hitl
+L003,2026-04-29 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,59,hitl

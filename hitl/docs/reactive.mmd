@@ -1,0 +1,13 @@
+flowchart LR
+  Start([Start])
+  Start --> ScanLocal[Local scan: check_disruption & inventory]
+  ScanLocal --> LowInv{Inventory < reorder_point?}
+  LowInv -- yes --> LocalReorder[Schedule local restock]
+  LowInv -- no --> NoAction[No coordination action]
+  LocalReorder --> SupplyFlowFixed[SupplyFlowEngine (fixed schedule)]
+  SupplyFlowFixed --> DisruptionCap{Upstream disrupted?}
+  DisruptionCap -- yes --> ApplyFixed[Apply FIXED_DISRUPTION_FACTOR]
+  DisruptionCap -- no --> NormalFlow[Normal fixed flow]
+  ApplyFixed --> End([End])
+  NormalFlow --> End
+  NoAction --> End

@@ -1,0 +1,14 @@
+log_id,timestamp,supplier,farm,slaughterhouse,wholesaler,retail,matched_rule,orchestrator_decision,urgency_level,justification,report_type,scenario_id,mode
+L001,2026-06-04 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,78,hitl
+L002,2026-06-04 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L003,2026-06-04 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L004,2026-06-05 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L005,2026-06-05 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L006,2026-06-05 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L007,2026-06-06 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L008,2026-06-06 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L009,2026-06-06 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L010,2026-06-07 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L011,2026-06-07 14:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,78,hitl
+L012,2026-06-07 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L013,2026-06-08 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl

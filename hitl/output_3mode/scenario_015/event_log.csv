@@ -1,0 +1,13 @@
+log_id,timestamp,supplier,farm,slaughterhouse,wholesaler,retail,matched_rule,orchestrator_decision,urgency_level,justification,report_type,scenario_id,mode
+L001,2026-01-29 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,15,hitl
+L002,2026-01-30 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,15,hitl
+L003,2026-01-30 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,15,hitl
+L004,2026-01-30 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L005,2026-01-30 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L006,2026-01-31 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L007,2026-01-31 12:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L008,2026-01-31 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L009,2026-02-01 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L010,2026-02-01 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L011,2026-02-01 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L012,2026-02-02 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl

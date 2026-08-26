@@ -1,0 +1,4 @@
+scenario_id,disruption_type,subtype,severity,seed_node,cascade_depth,SAR_threshold_used,Stock Availability Rate (%),Time to Recovery (hours),Stockout Duration (hours),Stockout Frequency,Min Stock During Disruption,Recovery Speed Index,Mean Recovery Inventory (kg),mode,Total Coordinator Events,HitL_Accept_Rate_%,HitL_Modify_Rate_%,HitL_Override_Rate_%,HitL_Mean_HRT_hours,HitL_Modify_Factor
+58,AVIAN_INFLUENZA,EMBARGO_SEVERE,high,supplier,3,23.09,24.219,,64.5,1,0.0,,56.32,reactive,,,,,,
+58,AVIAN_INFLUENZA,EMBARGO_SEVERE,high,supplier,3,23.09,86.198,9.0,5.0,1,0.0,0.9062,89.13,autonomous,6.0,,,,,
+58,AVIAN_INFLUENZA,EMBARGO_SEVERE,high,supplier,3,23.09,79.948,9.0,12.0,1,0.0,0.9062,89.84,hitl,6.0,54.55,27.27,0.0,0.643,0.95

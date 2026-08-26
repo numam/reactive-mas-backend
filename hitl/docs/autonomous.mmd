@@ -1,0 +1,15 @@
+flowchart LR
+  Start([Start])
+  Start --> Scan[Node scan → DisruptionReport? (`NodeAgent.scan`)]
+  Scan --> ReportYes{Disrupted?}
+  ReportYes -- yes --> Coordinator[`CoordinatingAgent.receive_report`]
+  Coordinator --> MatchRule[`match_rule` → ORCHESTRATOR_RULES]
+  MatchRule --> Signals[Emit signals (instructions)]
+  Signals --> ApplyInst[`apply_instructions()` applied immediately]
+  ApplyInst --> UpdateDB[DB updated (may set `reorder_request`)]
+  UpdateDB --> ReorderCheck{`reorder_request` > 0?}
+  ReorderCheck -- yes --> Amplify[Amplify flow (bypass caps)]
+  ReorderCheck -- no --> Caps[Apply disruption caps to flow]
+  Amplify --> SupplyFlow[SupplyFlowEngine schedules restock (no HRT)]
+  Caps --> SupplyFlow
+  SupplyFlow --> End([End])

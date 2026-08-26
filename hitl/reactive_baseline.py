@@ -20,14 +20,78 @@ from datetime import datetime, timedelta
 from typing import Optional
 from collections import defaultdict
 
+import os
+
 from agent_database      import AGENT_DATABASE, init_node_state, get_monitoring_interval
 from disruption_triggers import check_disruption
 from scenario_loader     import get_disruption_schedule
-from simulation_engine   import CSVDataLoader, SupplyFlowEngine
 
 CHAIN_ORDER  = ["supplier","farm","slaughterhouse","wholesaler","retail"]
 TICK_MINUTES = 15
 TICK_HOURS   = TICK_MINUTES / 60
+
+
+# ════════════════════════════════════════════════════════════════════
+# CSV DATA LOADER
+# ════════════════════════════════════════════════════════════════════
+
+class CSVDataLoader:
+    """Load normal-operations baseline data from CSV files per tier."""
+
+    def __init__(self, data_dir="."):
+        self._cache     = {}
+        self._baselines = {}
+        self._data_dir  = data_dir
+        for tier in CHAIN_ORDER:
+            path = os.path.join(data_dir, f"data_normal_{tier}.csv")
+            if os.path.exists(path):
+                df = pd.read_csv(path)
+                self._cache[tier] = df
+                num = df.select_dtypes(include="number").columns
+                num = [c for c in num if c not in
+                       ("disrupted", "disease_alert", "stockout_flag", "above_safety_stock")]
+                self._baselines[tier] = df[num].mean().to_dict()
+
+    def get_initial_state(self, tier: str,
+                          rng: Optional[np.random.Generator] = None) -> dict:
+        """Pick a row with adequate inventory levels as initial state."""
+        if tier not in self._cache:
+            return init_node_state(tier)
+        df  = self._cache[tier]
+        inv_col = {
+            "supplier"      : "available_supply",
+            "farm"          : "feed_stock",
+            "slaughterhouse": "output_stock",
+            "wholesaler"    : "inventory_level",
+            "retail"        : "retail_inventory",
+        }.get(tier)
+        if inv_col and inv_col in df.columns:
+            threshold = df[inv_col].quantile(0.40)
+            good_rows = df[df[inv_col] >= threshold]
+            if len(good_rows) == 0:
+                good_rows = df
+        else:
+            good_rows = df
+        idx = rng.integers(0, len(good_rows)) if rng else np.random.randint(0, len(good_rows))
+        row = good_rows.iloc[int(idx)].to_dict()
+        # Add any missing keys from AGENT_DATABASE defaults
+        base = init_node_state(tier)
+        for k, v in base.items():
+            if k not in row:
+                row[k] = v
+        return row
+
+    def get_sar_threshold(self, tier: str) -> float:
+        """Return safety stock threshold for SAR calculation."""
+        if tier in self._baselines and "safety_stock" in self._baselines[tier]:
+            return float(self._baselines[tier]["safety_stock"])
+        if tier == "retail":
+            return 30.0
+        return 0.0
+
+    def get_baseline(self, tier: str) -> dict:
+        return self._baselines.get(tier, {})
+
 
 # ── Fixed reorder policy per tier ────────────────────────────────────
 # In reactive mode: each tier only triggers a local reorder

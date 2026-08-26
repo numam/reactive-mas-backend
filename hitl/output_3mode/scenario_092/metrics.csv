@@ -1,0 +1,4 @@
+scenario_id,disruption_type,subtype,severity,seed_node,cascade_depth,SAR_threshold_used,Stock Availability Rate (%),Time to Recovery (hours),Stockout Duration (hours),Stockout Frequency,Min Stock During Disruption,Recovery Speed Index,Mean Recovery Inventory (kg),mode,Total Coordinator Events,HitL_Accept_Rate_%,HitL_Modify_Rate_%,HitL_Override_Rate_%,HitL_Mean_HRT_hours,HitL_Modify_Factor
+92,AVIAN_INFLUENZA,AI_LOW_SLAUGHTERHOUSE,low,slaughterhouse,1,23.09,34.375,,25.0,1,0.0,,52.64,reactive,,,,,,
+92,AVIAN_INFLUENZA,AI_LOW_SLAUGHTERHOUSE,low,slaughterhouse,1,23.09,100.0,9.0,0.0,0,41.69,0.8125,90.95,autonomous,6.0,,,,,
+92,AVIAN_INFLUENZA,AI_LOW_SLAUGHTERHOUSE,low,slaughterhouse,1,23.09,100.0,9.0,0.0,0,57.8,0.8125,95.73,hitl,6.0,41.67,8.33,16.67,1.146,0.91

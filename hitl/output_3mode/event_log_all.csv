@@ -1,0 +1,639 @@
+log_id,timestamp,supplier,farm,slaughterhouse,wholesaler,retail,matched_rule,orchestrator_decision,urgency_level,justification,report_type,scenario_id,mode
+L001,2026-01-01 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,1,hitl
+L002,2026-01-01 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,1,hitl
+L003,2026-01-01 20:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,1,hitl
+L004,2026-01-02 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,1,hitl
+L001,2026-01-03 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,2,hitl
+L002,2026-01-04 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,2,hitl
+L003,2026-01-04 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,2,hitl
+L004,2026-01-04 18:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,2,hitl
+L005,2026-01-05 03:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,2,hitl
+L006,2026-01-05 06:00,0,1,1,0,0,R5,Disruption,high,Gangguan berantai Farm → RPH menghambat aliran produksi,DisruptionReport,2,hitl
+L007,2026-01-05 12:00,0,0,1,0,0,R6,Potential Disruption,normal,Gangguan tunggal di RPH masih bisa dikompensasi,RecoveryReport,2,hitl
+L008,2026-01-05 16:00,0,0,1,1,0,R7,Disruption,high,Pemrosesan dan distribusi terganggu bersamaan,DisruptionReport,2,hitl
+L009,2026-01-05 21:00,0,1,1,1,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,2,hitl
+L001,2026-01-05 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,3,hitl
+L002,2026-01-05 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,3,hitl
+L003,2026-01-05 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,3,hitl
+L004,2026-01-08 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,3,hitl
+L005,2026-01-09 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,3,hitl
+L006,2026-01-09 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,3,hitl
+L007,2026-01-09 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,3,hitl
+L008,2026-01-09 20:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,3,hitl
+L009,2026-01-10 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,3,hitl
+L001,2026-01-07 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,4,hitl
+L002,2026-01-07 22:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,4,hitl
+L003,2026-01-07 22:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,4,hitl
+L004,2026-01-09 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,4,hitl
+L001,2026-01-09 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,5,hitl
+L002,2026-01-10 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,5,hitl
+L003,2026-01-11 02:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,5,hitl
+L004,2026-01-12 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,5,hitl
+L005,2026-01-12 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,5,hitl
+L006,2026-01-13 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,5,hitl
+L001,2026-01-11 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,6,hitl
+L002,2026-01-13 02:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,6,hitl
+L003,2026-01-14 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,6,hitl
+L004,2026-01-14 06:45,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,6,hitl
+L005,2026-01-14 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,6,hitl
+L006,2026-01-15 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,6,hitl
+L001,2026-01-13 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,7,hitl
+L002,2026-01-13 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,7,hitl
+L003,2026-01-14 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,7,hitl
+L004,2026-01-14 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,7,hitl
+L001,2026-01-15 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,8,hitl
+L002,2026-01-15 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,8,hitl
+L003,2026-01-15 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,8,hitl
+L004,2026-01-16 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,8,hitl
+L005,2026-01-16 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,8,hitl
+L006,2026-01-16 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,8,hitl
+L007,2026-01-17 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,8,hitl
+L008,2026-01-17 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,8,hitl
+L009,2026-01-17 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,8,hitl
+L010,2026-01-18 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,8,hitl
+L011,2026-01-18 14:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,8,hitl
+L012,2026-01-18 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,8,hitl
+L013,2026-01-19 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,8,hitl
+L001,2026-01-17 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,9,hitl
+L002,2026-01-17 23:15,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,9,hitl
+L003,2026-01-18 02:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,9,hitl
+L004,2026-01-19 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,9,hitl
+L001,2026-01-19 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,10,hitl
+L002,2026-01-19 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,10,hitl
+L003,2026-01-20 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,10,hitl
+L004,2026-01-20 09:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,10,hitl
+L005,2026-01-20 18:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,10,hitl
+L006,2026-01-21 03:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,10,hitl
+L007,2026-01-21 12:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,10,hitl
+L008,2026-01-21 21:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,10,hitl
+L001,2026-01-21 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,11,hitl
+L002,2026-01-22 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,11,hitl
+L003,2026-01-22 02:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,11,hitl
+L004,2026-01-22 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,11,hitl
+L005,2026-01-22 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,11,hitl
+L006,2026-01-23 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,11,hitl
+L007,2026-01-23 12:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,11,hitl
+L008,2026-01-23 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,11,hitl
+L009,2026-01-24 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,11,hitl
+L010,2026-01-24 08:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,11,hitl
+L011,2026-01-24 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,11,hitl
+L012,2026-01-25 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,11,hitl
+L001,2026-01-23 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,12,hitl
+L002,2026-01-23 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,12,hitl
+L003,2026-01-24 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,12,hitl
+L004,2026-01-24 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,12,hitl
+L005,2026-01-24 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,12,hitl
+L006,2026-01-24 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,12,hitl
+L007,2026-01-25 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,12,hitl
+L001,2026-01-25 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,13,hitl
+L002,2026-01-26 10:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,13,hitl
+L003,2026-01-28 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,13,hitl
+L004,2026-01-28 15:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,13,hitl
+L005,2026-01-28 22:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,13,hitl
+L006,2026-01-29 00:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,13,hitl
+L001,2026-01-27 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,14,hitl
+L002,2026-01-28 10:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,14,hitl
+L003,2026-01-30 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,14,hitl
+L004,2026-01-30 15:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,14,hitl
+L005,2026-01-31 00:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,14,hitl
+L006,2026-01-31 00:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,14,hitl
+L001,2026-01-29 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,15,hitl
+L002,2026-01-30 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,15,hitl
+L003,2026-01-30 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,15,hitl
+L004,2026-01-30 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L005,2026-01-30 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L006,2026-01-31 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L007,2026-01-31 12:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L008,2026-01-31 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L009,2026-02-01 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L010,2026-02-01 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L011,2026-02-01 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,15,hitl
+L012,2026-02-02 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,15,hitl
+L001,2026-01-31 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,16,hitl
+L002,2026-01-31 22:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,16,hitl
+L003,2026-01-31 23:15,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,16,hitl
+L004,2026-02-03 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,16,hitl
+L005,2026-02-03 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,16,hitl
+L006,2026-02-04 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,16,hitl
+L001,2026-02-02 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,17,hitl
+L002,2026-02-04 04:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,17,hitl
+L003,2026-02-05 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,17,hitl
+L004,2026-02-05 07:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,17,hitl
+L005,2026-02-05 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,17,hitl
+L006,2026-02-06 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,17,hitl
+L001,2026-02-04 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,18,hitl
+L002,2026-02-05 14:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,18,hitl
+L003,2026-02-07 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,18,hitl
+L004,2026-02-08 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,18,hitl
+L005,2026-02-08 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,18,hitl
+L006,2026-02-08 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,18,hitl
+L007,2026-02-08 22:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,18,hitl
+L008,2026-02-09 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,18,hitl
+L001,2026-02-06 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,19,hitl
+L002,2026-02-06 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,19,hitl
+L003,2026-02-06 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,19,hitl
+L004,2026-02-07 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,19,hitl
+L005,2026-02-07 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,19,hitl
+L006,2026-02-07 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,19,hitl
+L007,2026-02-08 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,19,hitl
+L008,2026-02-08 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,19,hitl
+L009,2026-02-08 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,19,hitl
+L010,2026-02-09 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,19,hitl
+L011,2026-02-09 08:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,19,hitl
+L012,2026-02-09 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,19,hitl
+L013,2026-02-10 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,19,hitl
+L001,2026-02-08 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,20,hitl
+L002,2026-02-08 22:30,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,20,hitl
+L003,2026-02-09 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,20,hitl
+L004,2026-02-09 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,20,hitl
+L005,2026-02-09 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,20,hitl
+L006,2026-02-09 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,20,hitl
+L007,2026-02-10 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,20,hitl
+L008,2026-02-10 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,20,hitl
+L009,2026-02-10 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,20,hitl
+L001,2026-02-10 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,21,hitl
+L002,2026-02-11 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,21,hitl
+L003,2026-02-11 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,21,hitl
+L001,2026-02-12 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,22,hitl
+L002,2026-02-13 20:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,22,hitl
+L003,2026-02-14 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,22,hitl
+L001,2026-02-14 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,23,hitl
+L002,2026-02-14 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,23,hitl
+L003,2026-02-15 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,23,hitl
+L004,2026-02-15 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,23,hitl
+L005,2026-02-15 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,23,hitl
+L001,2026-02-16 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,24,hitl
+L002,2026-02-17 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,24,hitl
+L003,2026-02-18 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,24,hitl
+L004,2026-02-19 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,24,hitl
+L005,2026-02-20 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,24,hitl
+L006,2026-02-20 09:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,24,hitl
+L007,2026-02-20 18:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,24,hitl
+L008,2026-02-21 03:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,24,hitl
+L001,2026-02-18 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,25,hitl
+L002,2026-02-19 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,25,hitl
+L003,2026-02-21 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,25,hitl
+L004,2026-02-22 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,25,hitl
+L005,2026-02-22 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,25,hitl
+L006,2026-02-22 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,25,hitl
+L007,2026-02-22 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,25,hitl
+L008,2026-02-23 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,25,hitl
+L001,2026-02-20 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,26,hitl
+L002,2026-02-21 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,26,hitl
+L003,2026-02-22 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,26,hitl
+L004,2026-02-23 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,26,hitl
+L005,2026-02-23 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,26,hitl
+L006,2026-02-24 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,26,hitl
+L001,2026-02-22 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,27,hitl
+L002,2026-02-23 18:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,27,hitl
+L003,2026-02-25 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,27,hitl
+L004,2026-02-26 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,27,hitl
+L005,2026-02-26 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,27,hitl
+L006,2026-02-26 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,27,hitl
+L007,2026-02-26 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,27,hitl
+L008,2026-02-27 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,27,hitl
+L001,2026-02-24 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,28,hitl
+L002,2026-02-26 02:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,28,hitl
+L003,2026-02-27 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,28,hitl
+L004,2026-02-27 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,28,hitl
+L005,2026-02-27 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,28,hitl
+L006,2026-02-28 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,28,hitl
+L001,2026-02-26 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,29,hitl
+L002,2026-02-27 18:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,29,hitl
+L003,2026-03-01 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,29,hitl
+L004,2026-03-02 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,29,hitl
+L005,2026-03-02 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,29,hitl
+L006,2026-03-02 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,29,hitl
+L007,2026-03-02 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,29,hitl
+L008,2026-03-03 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,29,hitl
+L001,2026-02-28 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,30,hitl
+L002,2026-03-01 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,30,hitl
+L003,2026-03-01 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,30,hitl
+L001,2026-03-02 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,31,hitl
+L002,2026-03-04 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,31,hitl
+L001,2026-03-04 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,32,hitl
+L002,2026-03-06 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,32,hitl
+L003,2026-03-07 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,32,hitl
+L004,2026-03-07 11:15,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,32,hitl
+L005,2026-03-07 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,32,hitl
+L006,2026-03-08 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,32,hitl
+L001,2026-03-06 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,33,hitl
+L002,2026-03-07 20:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,33,hitl
+L003,2026-03-09 01:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,33,hitl
+L004,2026-03-09 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,33,hitl
+L005,2026-03-09 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,33,hitl
+L006,2026-03-10 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,33,hitl
+L001,2026-03-08 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,34,hitl
+L002,2026-03-09 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,34,hitl
+L003,2026-03-10 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,34,hitl
+L004,2026-03-11 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,34,hitl
+L005,2026-03-11 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,34,hitl
+L006,2026-03-12 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,34,hitl
+L001,2026-03-10 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,35,hitl
+L002,2026-03-10 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,35,hitl
+L003,2026-03-10 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,35,hitl
+L004,2026-03-11 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,35,hitl
+L005,2026-03-11 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,35,hitl
+L006,2026-03-11 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,35,hitl
+L007,2026-03-12 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,35,hitl
+L008,2026-03-12 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,35,hitl
+L009,2026-03-12 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,35,hitl
+L010,2026-03-13 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,35,hitl
+L011,2026-03-13 08:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,35,hitl
+L012,2026-03-13 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,35,hitl
+L013,2026-03-14 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,35,hitl
+L001,2026-03-12 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,36,hitl
+L002,2026-03-13 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,36,hitl
+L001,2026-03-14 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,37,hitl
+L002,2026-03-16 04:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,37,hitl
+L003,2026-03-17 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,37,hitl
+L004,2026-03-17 09:45,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,37,hitl
+L005,2026-03-17 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,37,hitl
+L006,2026-03-18 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,37,hitl
+L001,2026-03-16 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,38,hitl
+L002,2026-03-18 02:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,38,hitl
+L003,2026-03-19 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,38,hitl
+L004,2026-03-19 06:45,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,38,hitl
+L005,2026-03-19 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,38,hitl
+L006,2026-03-20 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,38,hitl
+L001,2026-03-18 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,39,hitl
+L002,2026-03-19 18:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,39,hitl
+L003,2026-03-21 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,39,hitl
+L004,2026-03-22 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,39,hitl
+L005,2026-03-22 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,39,hitl
+L006,2026-03-22 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,39,hitl
+L007,2026-03-22 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,39,hitl
+L008,2026-03-23 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,39,hitl
+L009,2026-03-23 05:15,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,39,hitl
+L001,2026-03-20 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,40,hitl
+L002,2026-03-21 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,40,hitl
+L003,2026-03-21 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,40,hitl
+L004,2026-03-21 18:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,40,hitl
+L005,2026-03-22 03:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,40,hitl
+L001,2026-03-22 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,41,hitl
+L002,2026-03-22 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,41,hitl
+L003,2026-03-23 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,41,hitl
+L004,2026-03-23 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,41,hitl
+L005,2026-03-23 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,41,hitl
+L006,2026-03-23 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,41,hitl
+L007,2026-03-24 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,41,hitl
+L008,2026-03-24 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,41,hitl
+L009,2026-03-24 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,41,hitl
+L001,2026-03-24 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,42,hitl
+L002,2026-03-24 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,42,hitl
+L003,2026-03-24 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,42,hitl
+L004,2026-03-27 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,42,hitl
+L005,2026-03-27 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,42,hitl
+L006,2026-03-28 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,42,hitl
+L001,2026-03-26 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,43,hitl
+L002,2026-03-26 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,43,hitl
+L003,2026-03-27 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,43,hitl
+L004,2026-03-27 09:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,43,hitl
+L005,2026-03-27 18:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,43,hitl
+L006,2026-03-28 03:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,43,hitl
+L007,2026-03-28 12:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,43,hitl
+L008,2026-03-28 16:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,43,hitl
+L009,2026-03-28 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,43,hitl
+L001,2026-03-28 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,44,hitl
+L002,2026-03-28 22:30,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,44,hitl
+L003,2026-03-29 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,44,hitl
+L004,2026-03-29 09:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,44,hitl
+L005,2026-03-29 18:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,44,hitl
+L006,2026-03-30 03:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,44,hitl
+L007,2026-03-30 12:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,44,hitl
+L008,2026-03-30 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,44,hitl
+L009,2026-03-30 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,44,hitl
+L001,2026-03-30 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,45,hitl
+L002,2026-04-01 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,45,hitl
+L001,2026-04-01 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,46,hitl
+L002,2026-04-02 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,46,hitl
+L003,2026-04-03 02:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,46,hitl
+L004,2026-04-04 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,46,hitl
+L005,2026-04-04 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,46,hitl
+L006,2026-04-05 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,46,hitl
+L001,2026-04-03 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,47,hitl
+L002,2026-04-06 01:30,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,47,hitl
+L003,2026-04-06 06:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,47,hitl
+L004,2026-04-06 15:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,47,hitl
+L005,2026-04-07 00:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,47,hitl
+L001,2026-04-05 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,48,hitl
+L002,2026-04-06 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,48,hitl
+L003,2026-04-07 19:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,48,hitl
+L004,2026-04-08 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,48,hitl
+L005,2026-04-08 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,48,hitl
+L006,2026-04-09 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,48,hitl
+L001,2026-04-07 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,49,hitl
+L002,2026-04-07 22:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,49,hitl
+L003,2026-04-07 22:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,49,hitl
+L004,2026-04-09 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,49,hitl
+L001,2026-04-09 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,50,hitl
+L002,2026-04-10 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,50,hitl
+L003,2026-04-10 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,50,hitl
+L001,2026-04-11 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,51,hitl
+L002,2026-04-11 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,51,hitl
+L003,2026-04-12 04:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,51,hitl
+L004,2026-04-14 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,51,hitl
+L005,2026-04-14 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,51,hitl
+L006,2026-04-15 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,51,hitl
+L001,2026-04-13 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,52,hitl
+L002,2026-04-13 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,52,hitl
+L003,2026-04-13 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,52,hitl
+L004,2026-04-16 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,52,hitl
+L005,2026-04-16 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,52,hitl
+L006,2026-04-17 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,52,hitl
+L001,2026-04-15 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,53,hitl
+L002,2026-04-15 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,53,hitl
+L003,2026-04-15 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,53,hitl
+L004,2026-04-16 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,53,hitl
+L001,2026-04-17 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,54,hitl
+L002,2026-04-19 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,54,hitl
+L003,2026-04-20 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,54,hitl
+L004,2026-04-20 15:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,54,hitl
+L005,2026-04-20 16:30,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,54,hitl
+L006,2026-04-21 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,54,hitl
+L001,2026-04-19 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,55,hitl
+L002,2026-04-19 21:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,55,hitl
+L003,2026-04-19 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,55,hitl
+L004,2026-04-21 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,55,hitl
+L001,2026-04-21 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,56,hitl
+L002,2026-04-21 21:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,56,hitl
+L003,2026-04-22 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,56,hitl
+L004,2026-04-22 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,56,hitl
+L005,2026-04-22 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,56,hitl
+L006,2026-04-22 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,56,hitl
+L007,2026-04-23 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,56,hitl
+L008,2026-04-23 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,56,hitl
+L009,2026-04-23 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,56,hitl
+L001,2026-04-23 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,57,hitl
+L002,2026-04-23 17:15,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,57,hitl
+L003,2026-04-24 02:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,57,hitl
+L004,2026-04-26 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,57,hitl
+L005,2026-04-26 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,57,hitl
+L006,2026-04-26 22:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,57,hitl
+L007,2026-04-27 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,57,hitl
+L001,2026-04-25 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,58,hitl
+L002,2026-04-26 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,58,hitl
+L003,2026-04-27 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,58,hitl
+L004,2026-04-28 10:30,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,58,hitl
+L005,2026-04-28 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,58,hitl
+L006,2026-04-29 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,58,hitl
+L001,2026-04-27 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,59,hitl
+L002,2026-04-28 20:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,59,hitl
+L003,2026-04-29 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,59,hitl
+L001,2026-04-29 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,60,hitl
+L002,2026-04-30 08:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,60,hitl
+L003,2026-05-02 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,60,hitl
+L004,2026-05-02 15:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,60,hitl
+L005,2026-05-02 22:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,60,hitl
+L006,2026-05-03 00:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,60,hitl
+L001,2026-05-01 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,61,hitl
+L002,2026-05-02 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,61,hitl
+L003,2026-05-03 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,61,hitl
+L004,2026-05-04 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,61,hitl
+L005,2026-05-04 15:45,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,61,hitl
+L006,2026-05-05 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,61,hitl
+L001,2026-05-03 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,62,hitl
+L002,2026-05-05 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,62,hitl
+L001,2026-05-05 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,63,hitl
+L002,2026-05-07 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,63,hitl
+L001,2026-05-07 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,64,hitl
+L002,2026-05-08 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,64,hitl
+L003,2026-05-09 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,64,hitl
+L004,2026-05-10 11:15,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,64,hitl
+L005,2026-05-10 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,64,hitl
+L006,2026-05-11 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,64,hitl
+L001,2026-05-09 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,65,hitl
+L002,2026-05-10 20:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,65,hitl
+L003,2026-05-12 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,65,hitl
+L004,2026-05-13 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,65,hitl
+L005,2026-05-13 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,65,hitl
+L006,2026-05-13 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,65,hitl
+L007,2026-05-13 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,65,hitl
+L008,2026-05-14 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,65,hitl
+L001,2026-05-11 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,66,hitl
+L002,2026-05-13 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,66,hitl
+L001,2026-05-13 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,67,hitl
+L002,2026-05-13 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,67,hitl
+L003,2026-05-14 00:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,67,hitl
+L004,2026-05-14 09:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,67,hitl
+L005,2026-05-14 18:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,67,hitl
+L006,2026-05-15 03:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,67,hitl
+L007,2026-05-15 12:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,67,hitl
+L008,2026-05-15 21:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,67,hitl
+L001,2026-05-15 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,68,hitl
+L002,2026-05-16 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,68,hitl
+L001,2026-05-17 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,69,hitl
+L002,2026-05-18 10:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,69,hitl
+L003,2026-05-20 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,69,hitl
+L004,2026-05-21 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,69,hitl
+L005,2026-05-21 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,69,hitl
+L006,2026-05-21 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,69,hitl
+L007,2026-05-21 20:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,69,hitl
+L008,2026-05-22 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,69,hitl
+L001,2026-05-19 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,70,hitl
+L002,2026-05-21 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,70,hitl
+L001,2026-05-21 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,71,hitl
+L002,2026-05-22 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,71,hitl
+L001,2026-05-23 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,72,hitl
+L002,2026-05-24 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,72,hitl
+L003,2026-05-24 22:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,72,hitl
+L004,2026-05-26 00:45,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,72,hitl
+L005,2026-05-27 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,72,hitl
+L006,2026-05-27 09:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,72,hitl
+L007,2026-05-27 18:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,72,hitl
+L008,2026-05-28 03:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,72,hitl
+L001,2026-05-25 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,73,hitl
+L002,2026-05-25 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,73,hitl
+L003,2026-05-26 02:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,73,hitl
+L004,2026-05-28 06:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,73,hitl
+L005,2026-05-28 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,73,hitl
+L006,2026-05-28 22:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,73,hitl
+L007,2026-05-29 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,73,hitl
+L001,2026-05-27 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,74,hitl
+L002,2026-05-28 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,74,hitl
+L003,2026-05-29 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,74,hitl
+L004,2026-05-30 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,74,hitl
+L005,2026-05-31 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,74,hitl
+L006,2026-05-31 09:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,74,hitl
+L007,2026-05-31 18:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,74,hitl
+L008,2026-06-01 03:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,74,hitl
+L001,2026-05-29 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,75,hitl
+L002,2026-05-30 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,75,hitl
+L003,2026-05-31 02:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,75,hitl
+L004,2026-06-01 05:15,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,75,hitl
+L005,2026-06-01 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,75,hitl
+L006,2026-06-02 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,75,hitl
+L001,2026-05-31 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,76,hitl
+L002,2026-05-31 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,76,hitl
+L003,2026-06-01 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,76,hitl
+L004,2026-06-03 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,76,hitl
+L005,2026-06-04 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,76,hitl
+L006,2026-06-04 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,76,hitl
+L007,2026-06-04 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,76,hitl
+L008,2026-06-04 20:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,76,hitl
+L009,2026-06-05 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,76,hitl
+L001,2026-06-02 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,77,hitl
+L002,2026-06-03 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,77,hitl
+L003,2026-06-04 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,77,hitl
+L004,2026-06-05 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,77,hitl
+L005,2026-06-05 16:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,77,hitl
+L006,2026-06-06 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,77,hitl
+L001,2026-06-04 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,78,hitl
+L002,2026-06-04 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L003,2026-06-04 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L004,2026-06-05 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L005,2026-06-05 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L006,2026-06-05 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L007,2026-06-06 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L008,2026-06-06 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L009,2026-06-06 21:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L010,2026-06-07 06:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L011,2026-06-07 14:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,78,hitl
+L012,2026-06-07 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,78,hitl
+L013,2026-06-08 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,78,hitl
+L001,2026-06-06 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,79,hitl
+L002,2026-06-07 18:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,79,hitl
+L003,2026-06-09 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,79,hitl
+L004,2026-06-10 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,79,hitl
+L005,2026-06-10 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,79,hitl
+L006,2026-06-10 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,79,hitl
+L007,2026-06-10 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,79,hitl
+L008,2026-06-11 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,79,hitl
+L001,2026-06-08 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,80,hitl
+L002,2026-06-09 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,80,hitl
+L003,2026-06-09 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,80,hitl
+L004,2026-06-09 18:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,80,hitl
+L005,2026-06-10 03:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,80,hitl
+L006,2026-06-10 06:00,0,1,1,0,0,R5,Disruption,high,Gangguan berantai Farm → RPH menghambat aliran produksi,DisruptionReport,80,hitl
+L007,2026-06-10 12:00,0,0,1,0,0,R6,Potential Disruption,normal,Gangguan tunggal di RPH masih bisa dikompensasi,RecoveryReport,80,hitl
+L008,2026-06-10 21:00,0,1,1,0,0,R5,Disruption,high,Gangguan berantai Farm → RPH menghambat aliran produksi,DisruptionReport,80,hitl
+L001,2026-06-10 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,81,hitl
+L002,2026-06-11 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,81,hitl
+L003,2026-06-12 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,81,hitl
+L004,2026-06-13 12:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,81,hitl
+L005,2026-06-13 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,81,hitl
+L006,2026-06-14 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,81,hitl
+L001,2026-06-12 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,82,hitl
+L002,2026-06-14 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,82,hitl
+L003,2026-06-15 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,82,hitl
+L004,2026-06-15 15:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,82,hitl
+L005,2026-06-15 17:15,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,82,hitl
+L006,2026-06-16 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,82,hitl
+L001,2026-06-14 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,83,hitl
+L002,2026-06-14 21:45,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,83,hitl
+L003,2026-06-14 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,83,hitl
+L004,2026-06-15 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,83,hitl
+L005,2026-06-17 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,83,hitl
+L006,2026-06-18 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,83,hitl
+L001,2026-06-16 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,84,hitl
+L002,2026-06-17 22:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,84,hitl
+L003,2026-06-19 01:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,84,hitl
+L004,2026-06-19 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,84,hitl
+L005,2026-06-20 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,84,hitl
+L006,2026-06-20 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,84,hitl
+L007,2026-06-20 18:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,84,hitl
+L008,2026-06-21 03:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,84,hitl
+L001,2026-06-18 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,85,hitl
+L002,2026-06-19 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,85,hitl
+L003,2026-06-20 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,85,hitl
+L004,2026-06-21 11:15,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,85,hitl
+L005,2026-06-21 15:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,85,hitl
+L006,2026-06-22 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,85,hitl
+L001,2026-06-20 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,86,hitl
+L002,2026-06-21 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,86,hitl
+L001,2026-06-22 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,87,hitl
+L002,2026-06-24 04:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,87,hitl
+L003,2026-06-25 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,87,hitl
+L004,2026-06-25 07:30,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,87,hitl
+L005,2026-06-25 15:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,87,hitl
+L006,2026-06-26 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,87,hitl
+L001,2026-06-24 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,88,hitl
+L002,2026-06-25 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,88,hitl
+L003,2026-06-25 02:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,88,hitl
+L004,2026-06-25 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,88,hitl
+L005,2026-06-25 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,88,hitl
+L006,2026-06-26 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,88,hitl
+L007,2026-06-26 12:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,88,hitl
+L008,2026-06-26 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,88,hitl
+L009,2026-06-27 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,88,hitl
+L010,2026-06-27 08:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,88,hitl
+L011,2026-06-27 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,88,hitl
+L012,2026-06-28 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,88,hitl
+L001,2026-06-26 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,89,hitl
+L002,2026-06-27 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,89,hitl
+L003,2026-06-27 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,89,hitl
+L004,2026-06-27 12:00,0,1,1,0,0,R5,Disruption,high,Gangguan berantai Farm → RPH menghambat aliran produksi,DisruptionReport,89,hitl
+L005,2026-06-27 18:00,0,0,1,0,0,R6,Potential Disruption,normal,Gangguan tunggal di RPH masih bisa dikompensasi,RecoveryReport,89,hitl
+L006,2026-06-27 18:00,0,0,1,1,0,R7,Disruption,high,Pemrosesan dan distribusi terganggu bersamaan,DisruptionReport,89,hitl
+L007,2026-06-28 03:00,0,1,1,1,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,89,hitl
+L001,2026-06-28 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,90,hitl
+L002,2026-06-29 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,90,hitl
+L003,2026-06-29 04:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,90,hitl
+L004,2026-06-29 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,90,hitl
+L005,2026-06-29 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,90,hitl
+L006,2026-06-30 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,90,hitl
+L007,2026-06-30 12:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,90,hitl
+L008,2026-06-30 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,90,hitl
+L009,2026-07-01 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,90,hitl
+L010,2026-07-01 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,90,hitl
+L011,2026-07-01 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,90,hitl
+L012,2026-07-02 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,90,hitl
+L001,2026-06-30 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,91,hitl
+L002,2026-07-01 18:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,91,hitl
+L003,2026-07-03 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,91,hitl
+L004,2026-07-04 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,91,hitl
+L005,2026-07-04 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,91,hitl
+L006,2026-07-04 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,91,hitl
+L007,2026-07-04 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,91,hitl
+L008,2026-07-05 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,91,hitl
+L001,2026-07-02 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,92,hitl
+L002,2026-07-03 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,92,hitl
+L003,2026-07-03 09:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,92,hitl
+L004,2026-07-03 10:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,92,hitl
+L005,2026-07-03 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,92,hitl
+L006,2026-07-04 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,92,hitl
+L001,2026-07-04 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,93,hitl
+L002,2026-07-06 21:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,93,hitl
+L001,2026-07-06 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,94,hitl
+L002,2026-07-08 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,94,hitl
+L003,2026-07-09 06:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,94,hitl
+L004,2026-07-09 15:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,94,hitl
+L005,2026-07-09 16:30,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,DisruptionReport,94,hitl
+L006,2026-07-10 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,94,hitl
+L001,2026-07-08 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,95,hitl
+L002,2026-07-08 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,95,hitl
+L003,2026-07-08 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,95,hitl
+L004,2026-07-09 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,95,hitl
+L005,2026-07-09 09:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,95,hitl
+L001,2026-07-10 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,96,hitl
+L002,2026-07-11 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,96,hitl
+L003,2026-07-11 06:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,96,hitl
+L004,2026-07-11 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,96,hitl
+L005,2026-07-11 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,96,hitl
+L006,2026-07-12 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,96,hitl
+L007,2026-07-12 12:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,96,hitl
+L008,2026-07-12 21:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,96,hitl
+L001,2026-07-12 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,97,hitl
+L002,2026-07-12 18:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,97,hitl
+L003,2026-07-12 22:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,97,hitl
+L004,2026-07-13 00:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,97,hitl
+L005,2026-07-16 00:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,97,hitl
+L006,2026-07-16 09:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,97,hitl
+L007,2026-07-16 18:00,0,1,0,1,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,97,hitl
+L008,2026-07-17 03:00,0,0,0,1,1,R9,Disruption,high,Gangguan distribusi berdampak langsung pada ketersediaan Retail,RecoveryReport,97,hitl
+L001,2026-07-14 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,98,hitl
+L002,2026-07-15 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,98,hitl
+L001,2026-07-16 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,99,hitl
+L002,2026-07-17 00:00,0,0,0,0,0,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,RecoveryReport,99,hitl
+L003,2026-07-17 08:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,DisruptionReport,99,hitl
+L004,2026-07-17 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,99,hitl
+L005,2026-07-17 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,99,hitl
+L006,2026-07-18 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,99,hitl
+L001,2026-07-18 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,100,hitl
+L002,2026-07-19 18:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,100,hitl
+L003,2026-07-21 15:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,100,hitl
+L004,2026-07-22 00:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,100,hitl
+L005,2026-07-22 09:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,100,hitl
+L006,2026-07-22 16:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,100,hitl
+L007,2026-07-22 18:00,0,0,0,1,0,R8,Potential Disruption,normal,Gangguan logistik bersifat lokal dan dapat diatasi,RecoveryReport,100,hitl
+L008,2026-07-23 03:00,0,1,0,1,0,R12,Disruption,high,Produksi dan distribusi terganggu secara bersamaan,DisruptionReport,100,hitl
