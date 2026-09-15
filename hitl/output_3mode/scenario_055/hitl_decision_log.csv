@@ -1,4 +1,0 @@
-tick,timestamp,tier,rule_id,urgency,urgency_reason,global_pattern,disrupted_nodes,decision,response_time,modification_factor,n_instructions,instructions_summary,rationale,scenario_id
-36,2026-04-19 15:00,farm,R4,normal,Gangguan lokal di Farm masih dapat diredam,0|1|0|0|0,farm,accept,0.822,1.0,1,outgoing_orders ×0.80,"Farm Manager menerima rekomendasi coordinator (R4, urgency=normal)",55
-36,2026-04-19 15:00,slaughterhouse,R4,normal,Gangguan lokal di Farm masih dapat diredam,0|1|0|0|0,farm,accept,0.343,1.0,1,processing_capacity ×0.80,"Operations Manager menerima rekomendasi coordinator (R4, urgency=normal)",55
-36,2026-04-19 15:00,retail,R4,normal,Gangguan lokal di Farm masih dapat diredam,0|1|0|0|0,farm,modify,0.187,0.802,1,reorder_request +20,Store Manager memodifikasi instruksi (faktor=0.80) — pendekatan lebih konservatif,55

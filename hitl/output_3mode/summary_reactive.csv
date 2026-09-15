@@ -1,0 +1,5 @@
+Metric,N,Mean,Std,Min,Max,CI_95_Lo,CI_95_Hi
+Stock Availability Rate (%),2,2.995,1.289,2.083,3.906,-8.587,14.576
+Stockout Duration (hours),2,66.375,31.643,44.0,88.75,-217.926,350.676
+Stockout Frequency,2,1.0,0.0,1.0,1.0,,
+Min Stock During Disruption,2,0.0,0.0,0.0,0.0,,

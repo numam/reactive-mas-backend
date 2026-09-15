@@ -1,6 +1,0 @@
-log_id,timestamp,supplier,farm,slaughterhouse,wholesaler,retail,matched_rule,orchestrator_decision,urgency_level,justification,report_type,scenario_id,mode
-L001,2026-04-03 15:00,0,1,0,0,0,R4,Potential Disruption,normal,Gangguan lokal di Farm masih dapat diredam,DisruptionReport,47,hitl
-L002,2026-04-06 01:30,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,47,hitl
-L003,2026-04-06 06:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,47,hitl
-L004,2026-04-06 15:00,0,0,0,0,1,R14,Potential Disruption,normal,Gangguan di Retail belum menjalar ke upstream,RecoveryReport,47,hitl
-L005,2026-04-07 00:00,0,1,0,0,1,R1,Not Disruption,normal,Tidak ada entitas yang mengalami gangguan,DisruptionReport,47,hitl

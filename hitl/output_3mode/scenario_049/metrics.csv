@@ -1,4 +1,0 @@
-scenario_id,disruption_type,subtype,severity,seed_node,cascade_depth,SAR_threshold_used,Stock Availability Rate (%),Time to Recovery (hours),Stockout Duration (hours),Stockout Frequency,Min Stock During Disruption,Recovery Speed Index,Mean Recovery Inventory (kg),mode,Total Coordinator Events,HitL_Accept_Rate_%,HitL_Modify_Rate_%,HitL_Override_Rate_%,HitL_Mean_HRT_hours,HitL_Modify_Factor
-49,AVIAN_INFLUENZA,H9N2_LPAI,low,farm,2,23.09,32.292,,40.5,1,0.0,,56.11,reactive,,,,,,
-49,AVIAN_INFLUENZA,H9N2_LPAI,low,farm,2,23.09,100.0,,0.0,0,87.63,,103.01,autonomous,3.0,,,,,
-49,AVIAN_INFLUENZA,H9N2_LPAI,low,farm,2,23.09,22.222,7.5,33.5,35,0.0,0.8958,53.65,hitl,4.0,80.0,20.0,0.0,0.508,0.956
