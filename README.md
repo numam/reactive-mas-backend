@@ -65,6 +65,8 @@ code/
 
 - **Python 3.10+**
 - pip
+- Laragon dengan MySQL/MariaDB aktif
+- HeidiSQL (untuk menjalankan schema database)
 
 ---
 
@@ -95,11 +97,38 @@ source venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
+### Menyiapkan database Laragon melalui HeidiSQL
+
+1. Jalankan **MySQL** dari Laragon.
+2. Buka HeidiSQL dan buat koneksi baru dengan host `127.0.0.1`, port `3306`,
+  user `root`, serta password sesuai konfigurasi Laragon.
+3. Pilih database `supply` yang sudah dibuat.
+4. Buka file [`database/supply_schema.sql`](database/supply_schema.sql), buka
+  di query tab HeidiSQL, lalu jalankan seluruh script.
+
+Script membuat 19 tabel InnoDB, foreign key, composite primary key untuk tabel
+junction, index unik yang relevan, dan validasi CHECK. Kolom polimorfik
+(`vehicle.owner_id`, `shipment.origin_id`, `shipment.destination_id`, dan
+`inspection.entity_id`) sengaja tidak diberi FK tunggal karena dapat menunjuk
+lebih dari satu tabel; `*_type` menjadi discriminator dan divalidasi di API.
+
+Konfigurasi koneksi backend menggunakan environment variable berikut (nilai
+default cocok dengan instalasi Laragon umum):
+
+```text
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=supply
+```
+
 ---
 
 ## Menjalankan Backend
 
-Jalankan perintah berikut dari **root folder** (folder `code/`):
+Jalankan perintah berikut dari **root folder** (folder `code/`), setelah MySQL
+Laragon aktif:
 
 ```bash
 python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
@@ -112,6 +141,18 @@ Dokumentasi API interaktif tersedia di:
 - **ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 > Alternatif: gunakan script `backend/start.bat` (Windows only).
+
+`backend/start.bat` sekarang juga menjalankan `backend.main:app` dari root
+project. Ini diperlukan agar modul `backend.db` dan `backend.routers` dapat
+diimpor dengan benar.
+
+Untuk memeriksa koneksi SQL:
+
+```text
+GET http://127.0.0.1:8000/api/v1/database/health
+```
+
+Jika MySQL belum aktif atau kredensial salah, endpoint mengembalikan HTTP 503.
 
 ---
 
@@ -179,6 +220,58 @@ Dokumentasi API interaktif tersedia di:
 | GET | `/hitl/csv/download/{filename}` | Download file gabungan |
 | GET | `/hitl/csv/scenario/{id}/{filename}` | Download CSV per skenario |
 | GET | `/hitl/csv/scenario/{id}/json/{datatype}` | Ambil CSV sebagai JSON |
+
+### Supply Chain Database
+
+Endpoint ini membaca tabel SQL `supply` secara read-only. Nama tabel memakai
+whitelist sehingga nama tabel tidak pernah diteruskan bebas ke query.
+
+| Method | Endpoint | Deskripsi |
+|--------|----------|-----------|
+| GET | `/api/v1/database/health` | Cek koneksi MySQL |
+| GET | `/api/v1/database/tables` | Daftar tabel yang tersedia |
+| GET | `/api/v1/database/{table}?limit=100&offset=0` | Baca baris tabel dengan paginasi |
+
+Contoh request:
+
+```text
+GET http://127.0.0.1:8000/api/v1/database/farm?limit=20&offset=0
+```
+
+Contoh response:
+
+```json
+{
+  "table": "farm",
+  "total": 1,
+  "limit": 20,
+  "offset": 0,
+  "data": [{"farm_id": "FRM-JBR-008", "farm_name": "Peternakan Berkah Mandiri"}]
+}
+```
+
+### Akses dari frontend
+
+Frontend cukup mengatur base URL ke `http://127.0.0.1:8000` saat development.
+Contoh JavaScript:
+
+```javascript
+const API_BASE_URL = "http://127.0.0.1:8000";
+
+export async function getFarms(page = 0, pageSize = 20) {
+  const params = new URLSearchParams({
+    limit: String(pageSize),
+    offset: String(page * pageSize),
+  });
+  const response = await fetch(`${API_BASE_URL}/api/v1/database/farm?${params}`);
+  if (!response.ok) throw new Error("Gagal mengambil data farm");
+  return response.json();
+}
+```
+
+Untuk daftar entitas lain, ganti `farm` dengan nama tabel dari
+`GET /api/v1/database/tables`. Swagger tersedia di `/docs` dan menjadi sumber
+kontrak interaktif terbaru untuk frontend.
 
 ---
 

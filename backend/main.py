@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 import pandas as pd
 import numpy as np
 from scipy import stats as _scipy_stats
+from backend.routers.database import router as database_router
 
 # ─────────────────────────── PATHS ──────────────────────────────────────
 MAS_DIR     = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -159,6 +160,7 @@ app = FastAPI(
 )
 app.add_middleware(CORSMiddleware, allow_origins=["*"],
     allow_credentials=False, allow_methods=["*"], allow_headers=["*"])
+app.include_router(database_router)
 
 # ─────────────────────────── PYDANTIC MODELS ────────────────────────────
 class RunSimulationRequest(BaseModel):
@@ -179,16 +181,42 @@ class ManualDisruptionRequest(BaseModel):
     start_datetime:   str = Field("2026-06-01 06:00")
 
 class RunHITLRequest(BaseModel):
-    scenario_id: int  = Field(..., ge=1, le=100, description="ID skenario (1-100)")
-    mode:        str  = Field("reactive", description="reactive (only mode available)")
-    verbose:     bool = Field(False)
-    rng_seed:    int  = Field(42)
+    scenario_id:       int  = Field(..., ge=1, le=100, description="ID skenario (1-100)")
+    mode:              str  = Field("reactive", description="reactive (only mode available)")
+    verbose:           bool = Field(False)
+    rng_seed:          int  = Field(42)
+    use_custom_rules:  bool = Field(False, description="True = pakai custom_rules.json; False = default")
 
 class RunAllHITLRequest(BaseModel):
-    mode:         str             = Field("reactive", description="reactive (only mode available)")
-    verbose:      bool            = Field(False)
-    rng_seed:     int             = Field(42)
-    scenario_ids: Optional[List[int]] = Field(None, description="None = semua 100 skenario")
+    mode:             str             = Field("reactive", description="reactive (only mode available)")
+    verbose:          bool            = Field(False)
+    rng_seed:         int             = Field(42)
+    scenario_ids:     Optional[List[int]] = Field(None, description="None = semua 100 skenario")
+    use_custom_rules: bool            = Field(False, description="True = pakai custom_rules.json; False = default")
+
+# ── Pydantic models for reactive rules ──────────────────────────────
+# ── Pydantic models for reactive rules ──────────────────────────────
+# Semua field Optional — user bebas kirim 1, beberapa, atau semua sekaligus.
+# Field yang tidak dikirim tidak berubah (merge dengan state sebelumnya).
+
+class TierReorderPolicy(BaseModel):
+    threshold_ratio:   Optional[float] = Field(None, ge=0.0, le=1.0,
+        description="Reorder ketika stok < threshold_ratio × kapasitas")
+    reorder_qty_ratio: Optional[float] = Field(None, ge=0.0, le=1.0,
+        description="Jumlah reorder = reorder_qty_ratio × kapasitas")
+
+class RestockInterval(BaseModel):
+    wholesaler: Optional[int] = Field(None, ge=1, le=200,
+        description="Interval restock Wholesaler dalam ticks (1 tick = 15 menit)")
+    retail:     Optional[int] = Field(None, ge=1, le=200,
+        description="Interval restock Retail dalam ticks")
+
+class ReactiveRulesPayload(BaseModel):
+    reorder_policy:          Optional[Dict[str, TierReorderPolicy]] = Field(
+        None, description="Kirim hanya tier yang ingin diubah; tier/field lain tidak berubah")
+    restock_interval:        Optional[RestockInterval] = Field(None)
+    fixed_disruption_factor: Optional[float] = Field(None, ge=0.0, le=1.0,
+        description="Proporsi supply yang masih mengalir saat gangguan (0–1)")
 
 # ─────────────────────────── JSON-SAFE HELPERS ──────────────────────────
 def _safe(v):
@@ -428,7 +456,8 @@ def get_disruptions_per_scenario():
 # ═══════════════════════════════════════════════════════════════════
 # HITL — HELPER
 # ═══════════════════════════════════════════════════════════════════
-def _run_one_mode(scenario: dict, mode: str, seed: int, csv_ldr, verbose: bool) -> dict:
+def _run_one_mode(scenario: dict, mode: str, seed: int, csv_ldr, verbose: bool,
+                  use_custom_rules: bool = False) -> dict:
     """Jalankan satu skenario reactive, simpan ke subfolder, return dict hasil."""
     import traceback as _tb
     sid = scenario["scenario_id"]
@@ -439,7 +468,8 @@ def _run_one_mode(scenario: dict, mode: str, seed: int, csv_ldr, verbose: bool) 
 
     try:
         rm, rs = run_reactive_scenario(scenario, csv_loader=csv_ldr,
-                                        verbose=verbose, rng_seed=seed + sid)
+                                        verbose=verbose, rng_seed=seed + sid,
+                                        use_custom_rules=use_custom_rules)
         rm["mode"] = "reactive"
         rs = rs.copy(); rs["scenario_id"] = sid; rs["mode"] = "reactive"
         results_this["reactive"] = rm; stock_dfs.append(rs)
@@ -535,7 +565,8 @@ def hitl_simulate_scenario(req: RunHITLRequest):
     s = get_scenario_hitl(req.scenario_id, json_path=_SCENARIOS_JSON)
     if s is None: raise HTTPException(404, f"Skenario {req.scenario_id} tidak ditemukan.")
     ldr    = _csv_loader()
-    result = _run_one_mode(s, "reactive", req.rng_seed, ldr, req.verbose)
+    result = _run_one_mode(s, "reactive", req.rng_seed, ldr, req.verbose,
+                           use_custom_rules=req.use_custom_rules)
     rebuild_combined_csvs(OUTPUT_HITL)
     return _make_response({"scenario_id": req.scenario_id, "mode": "reactive",
                            "results": [result], "comparison": None})
@@ -555,7 +586,8 @@ def hitl_simulate_batch(req: RunAllHITLRequest):
     ldr = _csv_loader()
     out = []
     for scenario in target:
-        r = _run_one_mode(scenario, "reactive", req.rng_seed, ldr, req.verbose)
+        r = _run_one_mode(scenario, "reactive", req.rng_seed, ldr, req.verbose,
+                          use_custom_rules=req.use_custom_rules)
         out.append({"scenario_id": scenario["scenario_id"],
                     "modes": [{"mode": "reactive", "metrics": r["metrics"],
                                "saved_dir": r["saved_dir"]}]})
@@ -702,3 +734,278 @@ def hitl_get_scenario_json(scenario_id: int, datatype: str):
     df = pd.read_csv(path)
     return _make_response({"scenario_id": scenario_id, "datatype": datatype,
                            "rows": len(df), "data": _df_records(df)})
+
+
+# ═══════════════════════════════════════════════════════════════════
+# REACTIVE RULES — GET default / GET custom / PUT custom / DELETE custom
+# ═══════════════════════════════════════════════════════════════════
+
+_DEFAULT_RULES_PATH = os.path.join(HITL_DIR, "default_rules.json")
+_CUSTOM_RULES_PATH  = os.path.join(HITL_DIR, "custom_rules.json")
+
+VALID_TIERS = {"supplier", "farm", "slaughterhouse", "wholesaler", "retail"}
+
+
+def _read_rules_json(path: str) -> dict:
+    with open(path, "r", encoding="utf-8") as f:
+        return _json.load(f)
+
+
+def _extract_rules_for_api(raw: dict) -> dict:
+    """Return only numeric fields (strip _comment/_note keys)."""
+    reorder = {}
+    for tier in ["supplier", "farm", "slaughterhouse", "wholesaler", "retail"]:
+        entry = raw.get("reorder_policy", {}).get(tier, {})
+        reorder[tier] = {
+            "threshold_ratio"  : float(entry.get("threshold_ratio",   0.40)),
+            "reorder_qty_ratio": float(entry.get("reorder_qty_ratio", 0.30)),
+        }
+    interval_raw = raw.get("restock_interval", {})
+    return {
+        "reorder_policy": reorder,
+        "restock_interval": {
+            "wholesaler": int(interval_raw.get("wholesaler", 8)),
+            "retail"    : int(interval_raw.get("retail",     4)),
+        },
+        "fixed_disruption_factor": float(raw.get("fixed_disruption_factor", 0.35)),
+    }
+
+
+@app.get("/hitl/rules/default", tags=["Reactive Rules"])
+def get_default_rules():
+    """
+    Kembalikan rule bawaan (default_rules.json) — read-only, tidak bisa diubah.
+    Nilai ini selalu digunakan ketika `use_custom_rules=false` saat simulasi.
+    """
+    if not os.path.exists(_DEFAULT_RULES_PATH):
+        raise HTTPException(500, "default_rules.json tidak ditemukan di server.")
+    raw = _read_rules_json(_DEFAULT_RULES_PATH)
+    return _make_response({
+        "source"    : "default",
+        "read_only" : True,
+        "rules"     : _extract_rules_for_api(raw),
+    })
+
+
+@app.get("/hitl/rules/custom", tags=["Reactive Rules"])
+def get_custom_rules():
+    """
+    Kembalikan rule custom aktif.
+    - Jika custom_rules.json belum ada, kembalikan rule default sebagai base.
+    - Field `is_custom` menunjukkan apakah user sudah menyimpan custom rules.
+    """
+    if not os.path.exists(_CUSTOM_RULES_PATH):
+        # Belum ada custom → kembalikan defaults sebagai starting point
+        raw = _read_rules_json(_DEFAULT_RULES_PATH)
+        return _make_response({
+            "source"   : "default_fallback",
+            "is_custom": False,
+            "rules"    : _extract_rules_for_api(raw),
+        })
+    raw = _read_rules_json(_CUSTOM_RULES_PATH)
+    return _make_response({
+        "source"   : "custom",
+        "is_custom": True,
+        "rules"    : _extract_rules_for_api(raw),
+    })
+
+
+@app.post("/hitl/rules/custom", tags=["Reactive Rules"])
+def save_custom_rules(payload: ReactiveRulesPayload):
+    """
+    Simpan / update custom rules — bebas kirim 1 field, beberapa, atau semua sekaligus.
+    Field yang tidak dikirim tidak berubah; selalu merge dengan state sebelumnya
+    (atau default jika custom belum pernah disimpan).
+
+    **Contoh — ubah 1 field di 1 tier:**
+    ```json
+    { "reorder_policy": { "retail": { "threshold_ratio": 0.25 } } }
+    ```
+
+    **Contoh — ubah 2 tier sekaligus:**
+    ```json
+    {
+      "reorder_policy": {
+        "farm":     { "threshold_ratio": 0.60 },
+        "supplier": { "reorder_qty_ratio": 0.40 }
+      }
+    }
+    ```
+
+    **Contoh — ubah interval + disruption factor saja:**
+    ```json
+    { "restock_interval": { "wholesaler": 10 }, "fixed_disruption_factor": 0.50 }
+    ```
+
+    **Contoh — update semua sekaligus:**
+    ```json
+    {
+      "reorder_policy": {
+        "supplier":       { "threshold_ratio": 0.40, "reorder_qty_ratio": 0.30 },
+        "farm":           { "threshold_ratio": 0.55, "reorder_qty_ratio": 0.25 },
+        "slaughterhouse": { "threshold_ratio": 0.45, "reorder_qty_ratio": 0.25 },
+        "wholesaler":     { "threshold_ratio": 0.38, "reorder_qty_ratio": 0.30 },
+        "retail":         { "threshold_ratio": 0.30, "reorder_qty_ratio": 0.35 }
+      },
+      "restock_interval": { "wholesaler": 8, "retail": 4 },
+      "fixed_disruption_factor": 0.35
+    }
+    ```
+    """
+    # Validasi nama tier
+    if payload.reorder_policy is not None:
+        extra_tiers = set(payload.reorder_policy.keys()) - VALID_TIERS
+        if extra_tiers:
+            raise HTTPException(422, f"Tier tidak dikenal: {sorted(extra_tiers)}")
+
+    # Baca state saat ini (custom jika ada, fallback ke default)
+    if os.path.exists(_CUSTOM_RULES_PATH):
+        current = _read_rules_json(_CUSTOM_RULES_PATH)
+    else:
+        current = _read_rules_json(_DEFAULT_RULES_PATH)
+    current_rules = _extract_rules_for_api(current)
+
+    # Merge reorder_policy — hanya tier & field yang dikirim
+    if payload.reorder_policy is not None:
+        for tier, pol in payload.reorder_policy.items():
+            existing = current_rules["reorder_policy"].setdefault(tier, {
+                "threshold_ratio": 0.40, "reorder_qty_ratio": 0.30
+            })
+            if pol.threshold_ratio is not None:
+                existing["threshold_ratio"] = pol.threshold_ratio
+            if pol.reorder_qty_ratio is not None:
+                existing["reorder_qty_ratio"] = pol.reorder_qty_ratio
+
+    # Merge restock_interval
+    if payload.restock_interval is not None:
+        if payload.restock_interval.wholesaler is not None:
+            current_rules["restock_interval"]["wholesaler"] = payload.restock_interval.wholesaler
+        if payload.restock_interval.retail is not None:
+            current_rules["restock_interval"]["retail"] = payload.restock_interval.retail
+
+    # Merge fixed_disruption_factor
+    if payload.fixed_disruption_factor is not None:
+        current_rules["fixed_disruption_factor"] = payload.fixed_disruption_factor
+
+    # Simpan ke custom_rules.json
+    to_save = {
+        "_comment": "User-defined custom rules. Merges over default_rules.json at runtime.",
+        "reorder_policy": {
+            tier: {
+                "threshold_ratio"  : pol["threshold_ratio"],
+                "reorder_qty_ratio": pol["reorder_qty_ratio"],
+            }
+            for tier, pol in current_rules["reorder_policy"].items()
+        },
+        "restock_interval": current_rules["restock_interval"],
+        "fixed_disruption_factor": current_rules["fixed_disruption_factor"],
+    }
+
+    try:
+        with open(_CUSTOM_RULES_PATH, "w", encoding="utf-8") as f:
+            _json.dump(to_save, f, indent=2, ensure_ascii=False)
+    except Exception as exc:
+        raise HTTPException(500, f"Gagal menyimpan custom_rules.json: {exc}")
+
+    return _make_response({
+        "status" : "saved",
+        "source" : "custom",
+        "rules"  : current_rules,
+    })
+
+
+@app.delete("/hitl/rules/custom", tags=["Reactive Rules"])
+def delete_custom_rules():
+    """
+    Hapus custom_rules.json — simulasi selanjutnya otomatis kembali ke rule default.
+    """
+    if not os.path.exists(_CUSTOM_RULES_PATH):
+        return _make_response({"status": "not_found",
+                               "message": "custom_rules.json tidak ada, tidak ada yang dihapus."})
+    try:
+        os.remove(_CUSTOM_RULES_PATH)
+    except Exception as exc:
+        raise HTTPException(500, f"Gagal menghapus custom_rules.json: {exc}")
+    return _make_response({"status": "deleted",
+                           "message": "custom_rules.json berhasil dihapus. "
+                                      "Simulasi akan menggunakan rule default."})
+
+
+@app.get("/hitl/rules/effective", tags=["Reactive Rules"])
+def get_effective_rules(use_custom: bool = Query(False,
+        description="True = tampilkan merged custom+default; False = tampilkan default saja")):
+    """
+    Tampilkan rules efektif yang akan dipakai saat simulasi.
+    Berguna untuk preview sebelum menjalankan simulasi.
+    """
+    try:
+        rules = _rb.load_rules(use_custom=use_custom)
+    except Exception as exc:
+        raise HTTPException(500, f"Gagal load rules: {exc}")
+    return _make_response({
+        "use_custom": use_custom,
+        "source"    : "custom_merged" if use_custom and os.path.exists(_CUSTOM_RULES_PATH)
+                      else "default",
+        "rules"     : rules,
+    })
+
+
+@app.get("/dashboard/tiers", tags=["Dashboard"])
+def dashboard_tiers(use_custom: bool = Query(False, description="True = pakai custom rules jika ada")):
+    """
+    Kembalikan daftar 5 tier (supplier, farm, slaughterhouse, wholesaler, retail)
+    beserta `meta`, `variables`, nilai aturan (`reorder_policy`) dan penjelasan dari
+    `default_rules.json`. Jika `use_custom=true` dan `custom_rules.json` ada, nilai
+    numerik akan mencerminkan merge custom+default.
+    """
+    # Baca default notes
+    try:
+        default_raw = _read_rules_json(_DEFAULT_RULES_PATH)
+    except Exception:
+        default_raw = {}
+
+    # Load effective numeric rules (merged when use_custom True)
+    try:
+        effective = _rb.load_rules(use_custom=use_custom)
+    except Exception:
+        # fallback ke extractor jika load_rules bermasalah
+        effective = _extract_rules_for_api(default_raw)
+
+    tiers = []
+    for tier in ["supplier", "farm", "slaughterhouse", "wholesaler", "retail"]:
+        meta = AGENT_DATABASE.get(tier, {}).get("meta", {})
+        vars_raw = AGENT_DATABASE.get(tier, {}).get("variables", {})
+        variables = {k: {"default": v["default"], "unit": v["unit"], "description": v.get("description","")}
+                     for k, v in vars_raw.items()}
+        rule_vals = effective.get("reorder_policy", {}).get(tier, {})
+        note = default_raw.get("reorder_policy", {}).get(tier, {}).get("_note", "")
+        # Provide both legacy 'rules' and frontend-friendly 'rule' with 'explanation'
+        tiers.append({
+            "tier": tier,
+            "meta": meta,
+            "variables": variables,
+            "rules": {**rule_vals, "note": note},
+            "rule": {
+                "threshold_ratio": rule_vals.get("threshold_ratio"),
+                "reorder_qty_ratio": rule_vals.get("reorder_qty_ratio"),
+                "explanation": note,
+            }
+        })
+
+    restock_note = default_raw.get("restock_interval", {}).get("_note", "")
+    restock_interval = {
+        "wholesaler": effective.get("restock_interval", {}).get("wholesaler"),
+        "retail":     effective.get("restock_interval", {}).get("retail"),
+        "note": restock_note,
+    }
+
+    fixed_note = default_raw.get("_disruption_note", "")
+    fixed_disruption = {
+        "value": effective.get("fixed_disruption_factor", default_raw.get("fixed_disruption_factor")),
+        "note": fixed_note,
+    }
+
+    source = "custom_merged" if use_custom and os.path.exists(_CUSTOM_RULES_PATH) else "default"
+    return _make_response({"source": source, "total_tiers": len(tiers), "tiers": tiers,
+                           "restock_interval": restock_interval,
+                           "fixed_disruption_factor": fixed_disruption})

@@ -1,0 +1,30 @@
+{
+  "_comment": "User-defined custom rules. Merges over default_rules.json at runtime.",
+  "reorder_policy": {
+    "supplier": {
+      "threshold_ratio": 0.8,
+      "reorder_qty_ratio": 0.1
+    },
+    "farm": {
+      "threshold_ratio": 0.8,
+      "reorder_qty_ratio": 0.15
+    },
+    "slaughterhouse": {
+      "threshold_ratio": 0.8,
+      "reorder_qty_ratio": 0.15
+    },
+    "wholesaler": {
+      "threshold_ratio": 0.8,
+      "reorder_qty_ratio": 0.1
+    },
+    "retail": {
+      "threshold_ratio": 0.8,
+      "reorder_qty_ratio": 0.4
+    }
+  },
+  "restock_interval": {
+    "wholesaler": 4,
+    "retail": 3
+  },
+  "fixed_disruption_factor": 0.15
+}

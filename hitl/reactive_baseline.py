@@ -21,6 +21,7 @@ from typing import Optional
 from collections import defaultdict
 
 import os
+import json
 
 from agent_database      import AGENT_DATABASE, init_node_state, get_monitoring_interval
 from disruption_triggers import check_disruption
@@ -29,6 +30,89 @@ from scenario_loader     import get_disruption_schedule
 CHAIN_ORDER  = ["supplier","farm","slaughterhouse","wholesaler","retail"]
 TICK_MINUTES = 15
 TICK_HOURS   = TICK_MINUTES / 60
+
+# ════════════════════════════════════════════════════════════════════
+# RULES LOADER
+# ════════════════════════════════════════════════════════════════════
+
+_RULES_DIR         = os.path.dirname(os.path.abspath(__file__))
+_DEFAULT_RULES_PATH = os.path.join(_RULES_DIR, "default_rules.json")
+_CUSTOM_RULES_PATH  = os.path.join(_RULES_DIR, "custom_rules.json")
+
+
+def _load_rules_file(path: str) -> dict:
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_rules(use_custom: bool = False) -> dict:
+    """
+    Load reactive rules from JSON.
+
+    - use_custom=False  → always returns default_rules.json (the fixed baseline)
+    - use_custom=True   → merges custom_rules.json on top of defaults so any
+                          key not overridden still falls back to the default value.
+
+    Returns a dict with keys:
+        reorder_policy           : dict[tier] → {threshold_ratio, reorder_qty_ratio}
+        restock_interval         : dict  → {wholesaler, retail}
+        fixed_disruption_factor  : float
+    """
+    defaults = _load_rules_file(_DEFAULT_RULES_PATH)
+
+    if not use_custom:
+        return _extract_rules(defaults)
+
+    # Merge custom on top of defaults
+    if not os.path.exists(_CUSTOM_RULES_PATH):
+        return _extract_rules(defaults)
+
+    custom = _load_rules_file(_CUSTOM_RULES_PATH)
+    merged = json.loads(json.dumps(defaults))          # deep copy
+
+    # reorder_policy — per-tier merge
+    for tier in CHAIN_ORDER:
+        if "reorder_policy" in custom and tier in custom["reorder_policy"]:
+            merged["reorder_policy"].setdefault(tier, {})
+            merged["reorder_policy"][tier].update(custom["reorder_policy"][tier])
+
+    # restock_interval — per-key merge
+    if "restock_interval" in custom:
+        for k, v in custom["restock_interval"].items():
+            if k.startswith("_"):
+                continue
+            merged["restock_interval"][k] = v
+
+    # fixed_disruption_factor — scalar override
+    if "fixed_disruption_factor" in custom:
+        merged["fixed_disruption_factor"] = custom["fixed_disruption_factor"]
+
+    return _extract_rules(merged)
+
+
+def _extract_rules(raw: dict) -> dict:
+    """Strip comment keys and return only the numeric rule values."""
+    reorder = {}
+    for tier in CHAIN_ORDER:
+        entry = raw.get("reorder_policy", {}).get(tier, {})
+        reorder[tier] = {
+            "threshold_ratio"  : float(entry.get("threshold_ratio",   0.40)),
+            "reorder_qty_ratio": float(entry.get("reorder_qty_ratio", 0.30)),
+        }
+
+    interval_raw = raw.get("restock_interval", {})
+    interval = {
+        "wholesaler": int(interval_raw.get("wholesaler", 8)),
+        "retail"    : int(interval_raw.get("retail",     4)),
+    }
+
+    factor = float(raw.get("fixed_disruption_factor", 0.35))
+
+    return {
+        "reorder_policy"          : reorder,
+        "restock_interval"        : interval,
+        "fixed_disruption_factor" : factor,
+    }
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -93,27 +177,16 @@ class CSVDataLoader:
         return self._baselines.get(tier, {})
 
 
-# ── Fixed reorder policy per tier ────────────────────────────────────
-# In reactive mode: each tier only triggers a local reorder
-# when inventory falls below threshold — NO cross-tier communication
-
-REORDER_POLICY = {
-    "supplier"      : {"threshold_ratio": 0.40, "reorder_qty_ratio": 0.30},
-    "farm"          : {"threshold_ratio": 0.55, "reorder_qty_ratio": 0.25},
-    "slaughterhouse": {"threshold_ratio": 0.45, "reorder_qty_ratio": 0.25},
-    "wholesaler"    : {"threshold_ratio": 0.38, "reorder_qty_ratio": 0.30},
-    "retail"        : {"threshold_ratio": 0.30, "reorder_qty_ratio": 0.35},
-}
-
-# Fixed restock interval (ticks) — no adaptive adjustment
-RESTOCK_INTERVAL = {
-    "wholesaler": 8,
-    "retail"    : 4,
-}
-
-# Disruption reduces supply flow — but no adaptive response
-# Fixed reduction factor (tier doesn't know about upstream disruption)
-FIXED_DISRUPTION_FACTOR = 0.35  # same factor regardless of severity
+# ── Reorder policy per tier ──────────────────────────────────────────
+# Loaded from default_rules.json (fixed baseline) or custom_rules.json
+# (user-defined override). Pass use_custom=True to run_reactive_scenario
+# to activate custom rules; default is always the fixed baseline.
+#
+# Module-level defaults are kept for backward-compat imports:
+_DEFAULT_RULES       = load_rules(use_custom=False)
+REORDER_POLICY       = _DEFAULT_RULES["reorder_policy"]
+RESTOCK_INTERVAL     = _DEFAULT_RULES["restock_interval"]
+FIXED_DISRUPTION_FACTOR = _DEFAULT_RULES["fixed_disruption_factor"]
 
 
 class ReactiveNodeAgent:
@@ -196,8 +269,12 @@ class ReactiveSupplyFlowEngine:
     Uses FIXED schedule — no adaptive adjustment based on signals.
     Disruption reduces flow by a fixed factor regardless of severity.
     """
-    def __init__(self):
+    def __init__(self, rules: dict = None):
         self._pending = defaultdict(list)
+        r = rules or load_rules(use_custom=False)
+        self._restock_interval        = r["restock_interval"]
+        self._fixed_disruption_factor = r["fixed_disruption_factor"]
+        self._reorder_policy          = r["reorder_policy"]
 
     def schedule_restock(self, tick, tier, amount, delay=0):
         self._pending[tick + delay].append((tier, amount))
@@ -213,9 +290,16 @@ class ReactiveSupplyFlowEngine:
         """
         Fixed supply flow — no MAS coordination.
         Tier only knows its own inventory, not upstream status.
+
+        reorder_qty_ratio  : porsi stok upstream yang dikirim per event restock.
+        threshold_ratio    : batas inventory downstream yang memicu restock.
+        restock_interval   : seberapa sering restock dicek (tick).
+                             Interval lebih pendek = restock lebih sering,
+                             setiap pengiriman tetap sama jumlahnya → total lebih banyak.
+        fixed_disruption_factor : pengali saat upstream disrupted (0–1).
         """
-        # Wholesaler → Retail (fixed schedule, fixed rate)
-        if tick % RESTOCK_INTERVAL["retail"] == 0:
+        # ── Wholesaler → Retail ───────────────────────────────────────────
+        if tick % self._restock_interval["retail"] == 0:
             ws = agents.get("wholesaler")
             rt = agents.get("retail")
             if ws and rt:
@@ -224,24 +308,27 @@ class ReactiveSupplyFlowEngine:
                 rt_cap = rt.db_state.get("capacity", 150)
                 rt_ss  = rt.db_state.get("safety_stock", 30)
 
-                restock_needed = max(0, rt_cap * 0.70 - rt_inv)
-                if restock_needed > 0 and ws_inv > rt_ss:
-                    # Fixed flow rate — no adaptive increase/decrease
-                    base_flow = 8.0 * TICK_HOURS * RESTOCK_INTERVAL["retail"]
-
-                    # Apply fixed disruption factor if wholesaler disrupted
-                    # (reactive: no knowledge of WHY it's disrupted or severity)
+                # Restock jika retail di bawah threshold
+                rt_threshold = rt_cap * self._reorder_policy["retail"]["threshold_ratio"]
+                if rt_inv < rt_threshold and ws_inv > rt_ss:
+                    # base_flow: kapasitas retail × reorder_qty_ratio per event
+                    # Tidak dikalikan interval — interval lebih pendek = lebih sering kirim
+                    # dengan jumlah yang sama per event (bukan dikecilkan)
+                    base_flow = rt_cap * self._reorder_policy["retail"]["reorder_qty_ratio"]
                     if ws.disrupted == 1:
-                        base_flow *= FIXED_DISRUPTION_FACTOR
-
-                    amount = round(min(ws_inv * 0.30, restock_needed, base_flow), 2)
+                        base_flow *= self._fixed_disruption_factor
+                    amount = round(min(
+                        ws_inv * self._reorder_policy["retail"]["reorder_qty_ratio"],
+                        rt_cap - rt_inv,
+                        base_flow
+                    ), 2)
                     if amount > 0:
                         self.schedule_restock(tick, "retail", amount, delay=0)
                         ws.db_state["inventory_level"] = round(
                             max(0, ws_inv - amount), 2)
 
-        # Slaughterhouse → Wholesaler (fixed schedule)
-        if tick % RESTOCK_INTERVAL["wholesaler"] == 0:
+        # ── Slaughterhouse → Wholesaler ───────────────────────────────────
+        if tick % self._restock_interval["wholesaler"] == 0:
             sh = agents.get("slaughterhouse")
             ws = agents.get("wholesaler")
             if sh and ws:
@@ -249,12 +336,16 @@ class ReactiveSupplyFlowEngine:
                 ws_inv = ws.db_state.get("inventory_level", 200)
                 ws_cap = ws.db_state.get("capacity", 300)
 
-                restock_needed = max(0, ws_cap * 0.70 - ws_inv)
-                if restock_needed > 0 and sh_out > 50:
-                    base_flow = 12.0 * TICK_HOURS * RESTOCK_INTERVAL["wholesaler"]
+                ws_threshold = ws_cap * self._reorder_policy["wholesaler"]["threshold_ratio"]
+                if ws_inv < ws_threshold and sh_out > 50:
+                    base_flow = ws_cap * self._reorder_policy["wholesaler"]["reorder_qty_ratio"]
                     if sh.disrupted == 1:
-                        base_flow *= FIXED_DISRUPTION_FACTOR
-                    amount = round(min(sh_out * 0.35, restock_needed, base_flow), 2)
+                        base_flow *= self._fixed_disruption_factor
+                    amount = round(min(
+                        sh_out * self._reorder_policy["slaughterhouse"]["reorder_qty_ratio"],
+                        ws_cap - ws_inv,
+                        base_flow
+                    ), 2)
                     if amount > 0:
                         self.schedule_restock(tick, "wholesaler", amount, delay=0)
                         sh.db_state["output_stock"] = round(
@@ -262,19 +353,31 @@ class ReactiveSupplyFlowEngine:
 
 
 def run_reactive_scenario(scenario, csv_loader=None,
-                          verbose=False, rng_seed=None):
+                          verbose=False, rng_seed=None,
+                          use_custom_rules=False):
     """
     Run one scenario in Reactive Baseline mode.
     No coordinator, no HitL — each tier acts on fixed local policy only.
+
+    Parameters
+    ----------
+    use_custom_rules : bool
+        False (default) → use default_rules.json (fixed baseline).
+        True            → merge custom_rules.json over the defaults.
     """
     np.random.seed(rng_seed)
     rng         = np.random.default_rng(rng_seed)
     start_dt    = datetime.strptime(scenario["start_datetime"], "%Y-%m-%d %H:%M")
     total_ticks = int(scenario["duration_hours"] / TICK_HOURS)
 
+    # Load rules once for the whole run
+    rules = load_rules(use_custom=use_custom_rules)
+    reorder_policy = rules["reorder_policy"]
+
     if verbose:
+        src = "custom" if use_custom_rules else "default"
         print(f"\n  [REACTIVE] S{scenario['scenario_id']:03d} | "
-              f"{scenario.get('subtype','')} | {scenario['severity']}")
+              f"{scenario.get('subtype','')} | {scenario['severity']} | rules={src}")
 
     # Initialize agents from CSV
     agents = {}
@@ -287,7 +390,7 @@ def run_reactive_scenario(scenario, csv_loader=None,
             db_state =db_state,
         )
 
-    supply_flow = ReactiveSupplyFlowEngine()
+    supply_flow = ReactiveSupplyFlowEngine(rules=rules)
 
     # Disruption schedule
     schedule    = get_disruption_schedule(scenario["scenario_id"])
@@ -402,6 +505,18 @@ def run_reactive_scenario(scenario, csv_loader=None,
         "Recovery Speed Index"        : RSI,
         "Mean Recovery Inventory (kg)": round(recovery_inv, 2),
         "mode"                        : "reactive",
+        "rules_source"                : "custom" if use_custom_rules else "default",
+        "rules_used"                  : {
+            "reorder_policy"         : {
+                tier: {
+                    "threshold_ratio"  : round(rules["reorder_policy"][tier]["threshold_ratio"], 4),
+                    "reorder_qty_ratio": round(rules["reorder_policy"][tier]["reorder_qty_ratio"], 4),
+                }
+                for tier in CHAIN_ORDER
+            },
+            "restock_interval"       : rules["restock_interval"],
+            "fixed_disruption_factor": rules["fixed_disruption_factor"],
+        },
     }
 
     if verbose:
